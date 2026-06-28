@@ -37,7 +37,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-1.5 sm:gap-2 text-white shrink-0">
             <span className="text-xl sm:text-2xl">🛵</span>
-            <span className="font-bold text-base sm:text-lg whitespace-nowrap">Gagnoa Digital</span>
+            <span className="font-bold text-base sm:text-lg whitespace-nowrap">Inov'ci</span>
           </Link>
 
           {/* Desktop */}
