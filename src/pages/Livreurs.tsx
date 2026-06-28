@@ -6,16 +6,16 @@ import toast from "react-hot-toast";
 
 interface Livreur {
   id: string;
+  profil_id: string;
   moto: string;
   zone_couverture: string[];
   disponible: boolean;
   note_moyenne: number;
   missions_realisees: number;
-  profil: {
-    nom: string;
-    telephone: string;
-    photo_url: string | null;
-  };
+  // Informations du profil
+  nom: string;
+  telephone: string;
+  photo_url: string | null;
 }
 
 export default function Livreurs() {
@@ -29,20 +29,48 @@ export default function Livreurs() {
   const loadLivreurs = async () => {
     try {
       setLoading(true);
-      const { data, error } = await supabase
+
+      // 1. Récupérer les livreurs
+      const { data: livreursData, error: livreursError } = await supabase
         .from('livreurs')
-        .select(`
-          *,
-          profil:profils(
-            nom,
-            telephone,
-            photo_url
-          )
-        `)
+        .select('*')
         .order('note_moyenne', { ascending: false });
 
-      if (error) throw error;
-      setLivreurs(data || []);
+      if (livreursError) throw livreursError;
+
+      if (!livreursData || livreursData.length === 0) {
+        setLivreurs([]);
+        setLoading(false);
+        return;
+      }
+
+      // 2. Récupérer les profils
+      const profilIds = livreursData.map(l => l.profil_id).filter(Boolean);
+
+      let profilsData: any[] = [];
+      if (profilIds.length > 0) {
+        const { data, error } = await supabase
+          .from('profils')
+          .select('id, nom, telephone, photo_url')
+          .in('id', profilIds);
+
+        if (!error && data) {
+          profilsData = data;
+        }
+      }
+
+      // 3. Fusionner les données
+      const mergedData = livreursData.map((livreur) => {
+        const profil = profilsData.find(p => p.id === livreur.profil_id);
+        return {
+          ...livreur,
+          nom: profil?.nom || 'Livreur',
+          telephone: profil?.telephone || '',
+          photo_url: profil?.photo_url || null
+        };
+      });
+
+      setLivreurs(mergedData);
     } catch (error) {
       console.error('Erreur chargement livreurs:', error);
       toast.error('Erreur lors du chargement des livreurs');
@@ -54,7 +82,7 @@ export default function Livreurs() {
   const stats = {
     total: livreurs.length,
     disponibles: livreurs.filter(l => l.disponible).length,
-    verifies: livreurs.filter(l => l.profil?.photo_url || l.missions_realisees > 0).length,
+    verifies: livreurs.filter(l => l.photo_url || l.missions_realisees > 0).length,
     noteMoyenne: livreurs.length > 0
       ? (livreurs.reduce((acc, l) => acc + (l.note_moyenne || 0), 0) / livreurs.length).toFixed(1)
       : '0'
@@ -117,14 +145,14 @@ export default function Livreurs() {
               >
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center text-2xl">
-                    {l.profil?.photo_url ? (
-                      <img src={l.profil.photo_url} alt={l.profil.nom} className="w-full h-full rounded-full object-cover" />
+                    {l.photo_url ? (
+                      <img src={l.photo_url} alt={l.nom} className="w-full h-full rounded-full object-cover" />
                     ) : (
                       '🛵'
                     )}
                   </div>
                   <div>
-                    <h3 className="font-bold text-slate-800">{l.profil?.nom || 'Livreur'}</h3>
+                    <h3 className="font-bold text-slate-800">{l.nom || 'Livreur'}</h3>
                     <div className="flex items-center gap-2 text-xs">
                       <span className="flex items-center gap-0.5 text-yellow-500">
                         <HiStar className="text-xs" /> {l.note_moyenne || 0}
