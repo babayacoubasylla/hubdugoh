@@ -1,4 +1,4 @@
-import path from 'path'
+﻿import path from 'path'
 import { fileURLToPath } from 'url'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
@@ -16,8 +16,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icons/*.png'],
       manifest: {
-        name: 'Gagnoa Digital',
-        short_name: 'Gagnoa',
+        name: "Inov'CI",
+        short_name: "Inov'CI",
         description: 'Plateforme de livraison digitale à Gagnoa - Repas, Colis, Courses',
         theme_color: '#ea580c',
         background_color: '#ffffff',

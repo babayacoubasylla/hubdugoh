@@ -1,14 +1,14 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import NotificationBell from "@/components/shared/NotificationBell";
 import { HiBars3, HiXMark, HiUser, HiArrowRightOnRectangle } from "react-icons/hi2";
 
 const publicLinks = [
-  { to: "/restauration", label: "🍴 Restauration" },
-  { to: "/commerces", label: "🛍️ Boutiques" },
-  { to: "/courses", label: "🚚 Courses" },
-  { to: "/suivi", label: "📍 Suivi" },
+  { to: "/restauration", label: "ðŸ´ Restauration" },
+  { to: "/commerces", label: "ðŸ›ï¸ Boutiques" },
+  { to: "/courses", label: "ðŸšš Courses" },
+  { to: "/suivi", label: "ðŸ“ Suivi" },
 ];
 
 export default function Navbar() {
@@ -36,8 +36,8 @@ export default function Navbar() {
         <div className="flex h-14 sm:h-16 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-1.5 sm:gap-2 text-white shrink-0">
-            <span className="text-xl sm:text-2xl">🛵</span>
-            <span className="font-bold text-base sm:text-lg whitespace-nowrap">Inov'ci</span>
+            <span className="text-xl sm:text-2xl">ðŸ›µ</span>
+            <span className="font-bold text-base sm:text-lg whitespace-nowrap">Inov'CI</span>
           </Link>
 
           {/* Desktop */}
@@ -107,9 +107,9 @@ export default function Navbar() {
                 className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium bg-white/20 text-white"
               >
                 <span className="text-lg">
-                  {user.role === "admin" ? "👑" : user.role === "livreur" ? "🛵" : user.role === "commercant" ? "🪄" : "👤"}
+                  {user.role === "admin" ? "ðŸ‘‘" : user.role === "livreur" ? "ðŸ›µ" : user.role === "commercant" ? "ðŸª„" : "ðŸ‘¤"}
                 </span>
-                Mon espace — {user.nom}
+                Mon espace â€” {user.nom}
               </Link>
             )}
             {publicLinks.map((l) => (
@@ -128,7 +128,7 @@ export default function Navbar() {
                 onClick={handleLogout}
                 className="block w-full text-left px-4 py-3 rounded-xl text-sm font-medium text-orange-50 hover:bg-white/10 hover:text-white"
               >
-                🚪 Déconnexion
+                ðŸšª Déconnexion
               </button>
             ) : (
               <Link

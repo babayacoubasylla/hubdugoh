@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '@/contexts/AuthContext'
 import { motion } from 'framer-motion'
@@ -34,7 +34,7 @@ export default function Inscription() {
       await register(formData)
 
       // Succès - redirection vers login
-      alert('✅ Inscription réussie ! Veuillez vous connecter.')
+      alert('âœ… Inscription réussie ! Veuillez vous connecter.')
       navigate('/login')
     } catch (error: any) {
       // L'erreur est déjà affichée par le toast dans AuthContext
@@ -49,7 +49,7 @@ export default function Inscription() {
       <div className="max-w-md mx-auto bg-white rounded-2xl shadow-lg p-8">
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-slate-800">Inscription</h1>
-          <p className="text-slate-500 text-sm">Créez votre compte Gagnoa Digital</p>
+          <p className="text-slate-500 text-sm">Créez votre compte Inov'CI</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -96,7 +96,7 @@ export default function Inscription() {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              placeholder="••••••••"
+              placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
               className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500"
               required
             />

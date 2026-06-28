@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+﻿import { useRef } from 'react'
 import { HiPrinter } from 'react-icons/hi2'
 
 interface ReceiptProps {
@@ -47,8 +47,8 @@ export default function Receipt({ commande, onClose }: ReceiptProps) {
             <body>
               <div class="receipt" ref=${receiptRef}>
                 <div class="header">
-                  <h1>Gagnoa Digital</h1>
-                  <p>📋 Reçu de commande</p>
+                  <h1>Inov'CI</h1>
+                  <p>ðŸ“‹ Reçu de commande</p>
                 </div>
                 ${receiptRef.current?.innerHTML}
                 <div class="footer">Merci pour votre confiance !</div>
@@ -68,8 +68,8 @@ export default function Receipt({ commande, onClose }: ReceiptProps) {
                 <div ref={receiptRef} className="space-y-4">
                     {/* En-tête */}
                     <div className="text-center border-b border-dashed pb-4">
-                        <h2 className="text-2xl font-bold text-orange-500">Gagnoa Digital</h2>
-                        <p className="text-sm text-slate-500">📋 Reçu de commande</p>
+                        <h2 className="text-2xl font-bold text-orange-500">Inov'CI</h2>
+                        <p className="text-sm text-slate-500">ðŸ“‹ Reçu de commande</p>
                         <p className="text-xs text-slate-400 font-mono">#{commande.reference}</p>
                     </div>
 
