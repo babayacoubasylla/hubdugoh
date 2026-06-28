@@ -29,7 +29,7 @@ export default function Login() {
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-slate-800">Connexion</h1>
           <p className="text-slate-500 text-sm mt-1">
-            Connectez-vous à votre compte Inov'CI
+            Connectez-vous à votre compte Gagnoa Digital
           </p>
         </div>
 
@@ -56,7 +56,7 @@ export default function Login() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+              placeholder="••••••••"
               className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               required
             />
@@ -80,7 +80,7 @@ export default function Login() {
 
         <div className="mt-6 text-center text-xs text-slate-400">
           <p>Comptes de démonstration :</p>
-          <p>Admin: 0700000000 / admin123</p>
+          <p>Admin: 0101322783 / Admin@2026!</p>
           <p>Client: 0700000030 / client123</p>
         </div>
       </div>

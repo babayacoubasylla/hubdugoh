@@ -5,10 +5,10 @@ import NotificationBell from "@/components/shared/NotificationBell";
 import { HiBars3, HiXMark, HiUser, HiArrowRightOnRectangle } from "react-icons/hi2";
 
 const publicLinks = [
-  { to: "/restauration", label: "ðŸ´ Restauration" },
-  { to: "/commerces", label: "ðŸ›ï¸ Boutiques" },
-  { to: "/courses", label: "ðŸšš Courses" },
-  { to: "/suivi", label: "ðŸ“ Suivi" },
+  { to: "/restauration", label: "🍴 Restauration" },
+  { to: "/commerces", label: "🛍️ Boutiques" },
+  { to: "/courses", label: "🚚 Courses" },
+  { to: "/suivi", label: "📍 Suivi" },
 ];
 
 export default function Navbar() {
@@ -34,13 +34,11 @@ export default function Navbar() {
     <nav className="sticky top-0 z-40 bg-gradient-to-r from-orange-600 to-orange-500 shadow-lg safe-top">
       <div className="mx-auto max-w-7xl px-3 sm:px-4">
         <div className="flex h-14 sm:h-16 items-center justify-between">
-          {/* Logo */}
           <Link to="/" className="flex items-center gap-1.5 sm:gap-2 text-white shrink-0">
-            <span className="text-xl sm:text-2xl">ðŸ›µ</span>
-            <span className="font-bold text-base sm:text-lg whitespace-nowrap">Inov'CI</span>
+            <span className="text-xl sm:text-2xl">🛵</span>
+            <span className="font-bold text-base sm:text-lg whitespace-nowrap">Gagnoa Digital</span>
           </Link>
 
-          {/* Desktop */}
           <div className="hidden md:flex items-center gap-0.5">
             {publicLinks.map((l) => (
               <Link
@@ -54,7 +52,6 @@ export default function Navbar() {
             ))}
             <span className="mx-1.5 h-5 w-px bg-white/30" />
 
-            {/* Notification Bell - seulement si connecté */}
             {user && <NotificationBell />}
 
             {user ? (
@@ -87,7 +84,6 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Mobile toggle */}
           <button
             onClick={() => setOpen(!open)}
             className="md:hidden p-2 -mr-1 text-white rounded-lg hover:bg-white/10 touch-target"
@@ -97,7 +93,6 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile menu */}
         {open && (
           <div className="md:hidden pb-4 space-y-1 animate-slide-up">
             {user && (
@@ -107,9 +102,9 @@ export default function Navbar() {
                 className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium bg-white/20 text-white"
               >
                 <span className="text-lg">
-                  {user.role === "admin" ? "ðŸ‘‘" : user.role === "livreur" ? "ðŸ›µ" : user.role === "commercant" ? "ðŸª„" : "ðŸ‘¤"}
+                  {user.role === "admin" ? "👑" : user.role === "livreur" ? "🛵" : user.role === "commercant" ? "🪄" : "👤"}
                 </span>
-                Mon espace â€” {user.nom}
+                Mon espace — {user.nom}
               </Link>
             )}
             {publicLinks.map((l) => (
@@ -128,7 +123,7 @@ export default function Navbar() {
                 onClick={handleLogout}
                 className="block w-full text-left px-4 py-3 rounded-xl text-sm font-medium text-orange-50 hover:bg-white/10 hover:text-white"
               >
-                ðŸšª Déconnexion
+                🚪 Déconnexion
               </button>
             ) : (
               <Link

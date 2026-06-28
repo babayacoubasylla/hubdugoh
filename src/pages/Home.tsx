@@ -72,12 +72,12 @@ export default function Home() {
         setCourses(coursesData)
       } else {
         setCourses([
-          { id: 'c1', titre: 'Récupérer un colis à la gare', description: 'Un livreur récupère votre colis à la gare UTB et vous le livre.', prix: 2000, icon: '📦', actif: true },
-          { id: 'c2', titre: 'Achat au marché', description: 'Décrivez ce que vous voulez, un livreur l\'achète pour vous au marché central.', prix: 1500, icon: '🛒', actif: true },
-          { id: 'c3', titre: 'Livraison de documents', description: 'Faites livrer des documents importants en toute sécurité.', prix: 1000, icon: '📄', actif: true },
-          { id: 'c4', titre: 'Course en pharmacie', description: 'Un livreur va chercher vos médicaments et vous les apporte.', prix: 1500, icon: '💊', actif: true },
-          { id: 'c5', titre: 'Remise de clés', description: 'Faites remettre des clés ou petits objets à un proche.', prix: 1000, icon: '🔑', actif: true },
-          { id: 'c6', titre: 'Achat en boulangerie', description: 'Faites-vous livrer du pain frais et viennoiseries.', prix: 1000, icon: '🍞', actif: true }
+          { id: 'c1', titre: 'Récupérer un colis à la gare', description: 'Un livreur récupère votre colis à la gare UTB et vous le livre.', prix: 0, icon: '📦', actif: true },
+          { id: 'c2', titre: 'Achat au marché', description: 'Décrivez ce que vous voulez, un livreur l\'achète pour vous au marché central.', prix: 0, icon: '🛒', actif: true },
+          { id: 'c3', titre: 'Livraison de documents', description: 'Faites livrer des documents importants en toute sécurité.', prix: 0, icon: '📄', actif: true },
+          { id: 'c4', titre: 'Course en pharmacie', description: 'Un livreur va chercher vos médicaments et vous les apporte.', prix: 0, icon: '💊', actif: true },
+          { id: 'c5', titre: 'Remise de clés', description: 'Faites remettre des clés ou petits objets à un proche.', prix: 0, icon: '🔑', actif: true },
+          { id: 'c6', titre: 'Achat en boulangerie', description: 'Faites-vous livrer du pain frais et viennoiseries.', prix: 0, icon: '🍞', actif: true }
         ])
       }
 
@@ -346,7 +346,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* COURSES EXPRESS */}
+      {/* COURSES EXPRESS - SANS PRIX */}
       <section className="py-8 sm:py-12">
         <div className="mx-auto max-w-7xl px-4">
           <div className="flex items-center justify-between mb-4 sm:mb-6">
@@ -355,11 +355,11 @@ export default function Home() {
               Voir toutes les courses →
             </Link>
           </div>
-          <p className="text-sm text-slate-500 mb-4">Choisissez une course et personnalisez-la</p>
-          <p className="text-xs text-slate-400 mb-4">🛵 Base {FRAIS_LIVRAISON} FCFA + suppléments</p>
+          <p className="text-sm text-slate-500 mb-2">Choisissez une course</p>
+          <p className="text-xs text-slate-400 mb-4">🛵 Frais de livraison : {FRAIS_LIVRAISON} FCFA</p>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {courses.slice(0, 6).map((c) => {
-              const prixTotal = c.prix + FRAIS_LIVRAISON;
               return (
                 <div key={c.id} className="bg-white rounded-2xl shadow-sm p-5 hover:shadow-md transition-all border border-slate-100">
                   <div className="flex items-start gap-4">
@@ -367,22 +367,17 @@ export default function Home() {
                     <div className="flex-1 min-w-0">
                       <h3 className="font-bold text-slate-800 text-sm">{c.titre}</h3>
                       <p className="text-xs text-slate-500 mt-1 line-clamp-2">{c.description}</p>
-                      <div className="flex items-center justify-between mt-3">
-                        <div>
-                          <span className="font-bold text-blue-600 text-base">
-                            {prixTotal.toLocaleString()} FCFA
-                          </span>
-                          <span className="text-[10px] text-slate-400 ml-2">
-                            dont {FRAIS_LIVRAISON} FCFA base
-                          </span>
-                        </div>
-                        <Link
-                          to="/courses"
-                          className="px-3 py-1.5 bg-blue-500 text-white rounded-lg text-xs font-medium hover:bg-blue-600 transition-colors"
-                        >
-                          + Ajouter
-                        </Link>
+                      <div className="flex flex-col mt-3">
+                        <span className="text-sm font-medium text-blue-600">
+                          🛵 Livraison : {FRAIS_LIVRAISON} FCFA
+                        </span>
                       </div>
+                      <Link
+                        to="/courses"
+                        className="inline-block mt-3 px-4 py-2 bg-blue-500 text-white rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors"
+                      >
+                        + Ajouter
+                      </Link>
                     </div>
                   </div>
                 </div>

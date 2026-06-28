@@ -45,10 +45,10 @@ export default function Receipt({ commande, onClose }: ReceiptProps) {
               </style>
             </head>
             <body>
-              <div class="receipt" ref=${receiptRef}>
+              <div class="receipt">
                 <div class="header">
-                  <h1>Inov'CI</h1>
-                  <p>ðŸ“‹ Reçu de commande</p>
+                  <h1>Gagnoa Digital</h1>
+                  <p>📋 Reçu de commande</p>
                 </div>
                 ${receiptRef.current?.innerHTML}
                 <div class="footer">Merci pour votre confiance !</div>
@@ -66,14 +66,12 @@ export default function Receipt({ commande, onClose }: ReceiptProps) {
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
             <div className="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto p-6">
                 <div ref={receiptRef} className="space-y-4">
-                    {/* En-tête */}
                     <div className="text-center border-b border-dashed pb-4">
-                        <h2 className="text-2xl font-bold text-orange-500">Inov'CI</h2>
-                        <p className="text-sm text-slate-500">ðŸ“‹ Reçu de commande</p>
+                        <h2 className="text-2xl font-bold text-orange-500">Gagnoa Digital</h2>
+                        <p className="text-sm text-slate-500">📋 Reçu de commande</p>
                         <p className="text-xs text-slate-400 font-mono">#{commande.reference}</p>
                     </div>
 
-                    {/* Détails */}
                     <div className="space-y-2">
                         <div className="flex justify-between text-sm">
                             <span className="text-slate-500">Date</span>
@@ -103,7 +101,6 @@ export default function Receipt({ commande, onClose }: ReceiptProps) {
                         )}
                     </div>
 
-                    {/* Produits */}
                     <div className="border-t pt-4">
                         <h4 className="font-semibold text-sm mb-2">Détails de la commande</h4>
                         {commande.produits.map((p, i) => (
@@ -114,7 +111,6 @@ export default function Receipt({ commande, onClose }: ReceiptProps) {
                         ))}
                     </div>
 
-                    {/* Totaux */}
                     <div className="border-t pt-4 space-y-1">
                         <div className="flex justify-between text-sm">
                             <span>Sous-total</span>
@@ -135,7 +131,6 @@ export default function Receipt({ commande, onClose }: ReceiptProps) {
                     </div>
                 </div>
 
-                {/* Boutons */}
                 <div className="flex gap-3 mt-6">
                     <button
                         onClick={handlePrint}

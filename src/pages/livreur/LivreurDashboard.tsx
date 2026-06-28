@@ -43,14 +43,23 @@ export default function LivreurDashboard() {
     if (!livreur) return;
 
     try {
-      // Missions du livreur
-      const { data: missions } = await supabase
+      // ✅ 1. Missions du livreur (tous statuts)
+      const { data: missions, error: missionsError } = await supabase
         .from('missions')
         .select('*')
         .eq('livreur_id', livreur.id);
 
-      const terminees = missions?.filter(m => m.statut === 'terminee') || [];
-      const enCours = missions?.filter(m => m.statut === 'en_cours') || [];
+      if (missionsError) throw missionsError;
+
+      // ✅ 2. Missions terminées = 'terminee' ou 'livree'
+      const terminees = missions?.filter(m =>
+        m.statut === 'terminee' || m.statut === 'livree'
+      ) || [];
+
+      // ✅ 3. Missions en cours = 'en_cours' ou 'acceptee' ou 'recuperation'
+      const enCours = missions?.filter(m =>
+        m.statut === 'en_cours' || m.statut === 'acceptee' || m.statut === 'recuperation'
+      ) || [];
 
       const maintenant = new Date();
       const debutMois = new Date(maintenant.getFullYear(), maintenant.getMonth(), 1);
@@ -58,26 +67,31 @@ export default function LivreurDashboard() {
         new Date(m.created_at) >= debutMois
       ) || [];
 
-      // Gains
+      // ✅ 4. Gains totaux (missions terminées)
       const gainsTotal = terminees.reduce((sum, m) => sum + (m.gain_livreur || 0), 0);
-      const gainsMois = missionsMois.filter(m => m.statut === 'terminee')
-        .reduce((sum, m) => sum + (m.gain_livreur || 0), 0);
+      const gainsMois = missionsMois.filter(m =>
+        m.statut === 'terminee' || m.statut === 'livree'
+      ).reduce((sum, m) => sum + (m.gain_livreur || 0), 0);
 
-      // Note moyenne
-      const { data: avis } = await supabase
+      // ✅ 5. Note moyenne
+      const { data: avis, error: avisError } = await supabase
         .from('avis')
         .select('note')
         .eq('livreur_id', livreur.id);
+
+      if (avisError) throw avisError;
 
       const noteMoyenne = avis?.length
         ? avis.reduce((sum, a) => sum + a.note, 0) / avis.length
         : livreur.note_moyenne || 0;
 
-      // Missions disponibles
-      const { count: disponibles } = await supabase
+      // ✅ 6. Missions disponibles (statut = 'disponible' uniquement)
+      const { count: disponibles, error: dispoError } = await supabase
         .from('missions')
         .select('*', { count: 'exact', head: true })
         .eq('statut', 'disponible');
+
+      if (dispoError) throw dispoError;
 
       setStats({
         missionsTotal: missions?.length || 0,
