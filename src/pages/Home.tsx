@@ -131,7 +131,7 @@ export default function Home() {
         <div className="relative mx-auto max-w-7xl px-4 py-10 sm:py-16 md:py-20">
           <div className="text-center max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/20 backdrop-blur rounded-full text-xs sm:text-sm mb-4">
-              🚀 Service disponible à Gagnoa
+              🚀 Service disponible partout en Côte d'Ivoire
             </div>
             <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-3">
               Ce que vous voulez. <br />
