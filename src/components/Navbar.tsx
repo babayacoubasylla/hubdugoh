@@ -36,7 +36,7 @@ export default function Navbar() {
         <div className="flex h-14 sm:h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-1.5 sm:gap-2 text-white shrink-0">
             <span className="text-xl sm:text-2xl">🛵</span>
-            <span className="font-bold text-base sm:text-lg whitespace-nowrap">Gagnoa Digital</span>
+            <span className="font-bold text-base sm:text-lg whitespace-nowrap">Inov_ci</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-0.5">
@@ -44,8 +44,7 @@ export default function Navbar() {
               <Link
                 key={l.to}
                 to={l.to}
-                className={`px-2.5 py-1.5 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${location.pathname === l.to ? "bg-white/20 text-white" : "text-orange-50 hover:bg-white/10 hover:text-white"
-                  }`}
+                className={`px-2.5 py-1.5 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${location.pathname === l.to ? "bg-white/20 text-white" : "text-orange-50 hover:bg-white/10 hover:text-white"}`}
               >
                 {l.label}
               </Link>
@@ -112,8 +111,7 @@ export default function Navbar() {
                 key={l.to}
                 to={l.to}
                 onClick={() => setOpen(false)}
-                className={`block px-4 py-3 rounded-xl text-sm font-medium ${location.pathname === l.to ? "bg-white/20 text-white" : "text-orange-50 hover:bg-white/10 hover:text-white"
-                  }`}
+                className={`block px-4 py-3 rounded-xl text-sm font-medium ${location.pathname === l.to ? "bg-white/20 text-white" : "text-orange-50 hover:bg-white/10 hover:text-white"}`}
               >
                 {l.label}
               </Link>

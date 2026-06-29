@@ -8,7 +8,7 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 text-white font-bold text-lg mb-3">
               <span className="text-2xl">🛵</span>
-              <span>Gagnoa Digital</span>
+              <span>Inov_ci</span>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed">
               Livraison rapide & fiable à Gagnoa. Repas, colis et courses en toute sécurité.
@@ -41,15 +41,15 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-3 text-sm">Contact</h4>
             <div className="space-y-2 text-sm text-slate-400">
-              <p>📍 Gagnoa, Côte d'Ivoire</p>
-              <p>📞 +225 07 00 00 00</p>
-              <p>📧 contact@gagnoadigital.ci</p>
+              <p>📍 Côte d'Ivoire</p>
+              <p>📞 +225 01 01 32 27 83</p>
+              <p>📧 contact@bysgroupconsulting.ci</p>
             </div>
           </div>
         </div>
 
         <div className="border-t border-slate-800 mt-8 pt-6 text-center text-xs text-slate-500">
-          © 2026 Gagnoa Digital — Tous droits réservés.
+          © 2026 BYS Group Consulting — Tous droits réservés.
         </div>
       </div>
     </footer>
